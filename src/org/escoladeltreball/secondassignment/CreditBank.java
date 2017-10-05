@@ -15,7 +15,6 @@ public class CreditBank extends BankImpl {
 	 */
 	public CreditBank(String owner, double balance) {
 		super(owner, balance);
-		// TODO Auto-generated constructor stub
 	}
 
 	/* (non-Javadoc)
@@ -23,8 +22,14 @@ public class CreditBank extends BankImpl {
 	 */
 	@Override
 	public void withdraw(double euros) throws Exception {
-		// TODO Auto-generated method stub
-
+		if (balance == MIN_BALANCE) {
+			System.out.println("You're at the minimum balance you can have");
+		} else if (balance - euros < MIN_BALANCE) {
+			System.out.println("You're now at the minimum balance you can have");
+			balance = MIN_BALANCE;
+		} else {
+			balance -= euros;
+		}
 	}
 
 	/* (non-Javadoc)
@@ -32,7 +37,9 @@ public class CreditBank extends BankImpl {
 	 */
 	@Override
 	public boolean isBalanceNegative() {
-		// TODO Auto-generated method stub
+		if (balance < 0) {
+			return true;
+		}
 		return false;
 	}
 

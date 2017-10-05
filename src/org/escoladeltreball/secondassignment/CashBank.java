@@ -22,8 +22,11 @@ public class CashBank extends BankImpl {
 	 */
 	@Override
 	public void withdraw(double euros) throws Exception {
-		// TODO Auto-generated method stub
-
+		if (balance - euros < 0) {
+			System.out.println("Balance can not be negative");
+		} else {
+			balance -= euros;
+		}
 	}
 
 	/* (non-Javadoc)
@@ -31,7 +34,6 @@ public class CashBank extends BankImpl {
 	 */
 	@Override
 	public boolean isBalanceNegative() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
