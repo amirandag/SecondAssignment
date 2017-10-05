@@ -16,6 +16,8 @@ import org.junit.Test;
  *
  */
 public class CashBankTest {
+	
+	CashBank cashBank;
 
 	/**
 	 * @throws java.lang.Exception
@@ -36,6 +38,7 @@ public class CashBankTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
+		cashBank = new CashBank("Alex", 100.0);
 	}
 
 	/**
@@ -43,14 +46,7 @@ public class CashBankTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
-	}
-
-	/**
-	 * Test method for {@link org.escoladeltreball.secondassignment.CashBank#withdraw(double)}.
-	 */
-	@Test
-	public void testWithdraw() {
-		fail("Not yet implemented");
+		cashBank = null;
 	}
 
 	/**
@@ -58,15 +54,7 @@ public class CashBankTest {
 	 */
 	@Test
 	public void testIsBalanceNegative() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link org.escoladeltreball.secondassignment.BankImpl#deposit(double)}.
-	 */
-	@Test
-	public void testDeposit() {
-		fail("Not yet implemented");
+		assertEquals(false, cashBank.isBalanceNegative());
 	}
 
 	/**
@@ -74,7 +62,7 @@ public class CashBankTest {
 	 */
 	@Test
 	public void testToDollars() {
-		fail("Not yet implemented");
+		assertEquals(140.0, cashBank.toDollars(),1.0e-4);
 	}
 
 	/**
@@ -82,7 +70,15 @@ public class CashBankTest {
 	 */
 	@Test
 	public void testGetBalance() {
-		fail("Not yet implemented");
+		assertEquals(100.0, cashBank.getBalance(),1.0e-4);
+		try {
+			cashBank.withdraw(40.0);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		assertEquals(60.0, cashBank.getBalance(),1.0e-4);
+		cashBank.deposit(80.0);
+		assertEquals(140.0, cashBank.getBalance(),1.0e-4);
 	}
 
 }
