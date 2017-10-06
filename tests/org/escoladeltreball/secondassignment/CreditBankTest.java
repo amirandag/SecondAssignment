@@ -84,13 +84,13 @@ public class CreditBankTest {
 		}
 		assertEquals(-60.0, creditBank.getBalance(), 1-0e-4);
 		try {
-			creditBank.withdraw(500.0);
+			creditBank.withdraw(20.0);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		assertEquals(-300.0, creditBank.getBalance(), 1-0e-4);
+		assertEquals(-80.0, creditBank.getBalance(), 1-0e-4);
 		creditBank.deposit(500.0);
-		assertEquals(200.0, creditBank.getBalance(), 1-0e-4);
+		assertEquals(420.0, creditBank.getBalance(), 1-0e-4);
 	}
 
 }

@@ -22,11 +22,8 @@ public class CreditBank extends BankImpl {
 	 */
 	@Override
 	public void withdraw(double euros) throws Exception {
-		if (balance == MIN_BALANCE) {
-			System.out.println("You're at the minimum balance you can have");
-		} else if (balance - euros < MIN_BALANCE) {
-			System.out.println("You're now at the minimum balance you can have");
-			balance = MIN_BALANCE;
+		if (balance - euros < MIN_BALANCE) {
+			throw new Exception("You can't go lower than the minimum balance");
 		} else {
 			balance -= euros;
 		}

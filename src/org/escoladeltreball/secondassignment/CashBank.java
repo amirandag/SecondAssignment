@@ -23,7 +23,7 @@ public class CashBank extends BankImpl {
 	@Override
 	public void withdraw(double euros) throws Exception {
 		if (balance - euros < 0) {
-			System.out.println("Balance can not be negative");
+			throw new Exception("The balance of a cash account can't be negative");
 		} else {
 			balance -= euros;
 		}
